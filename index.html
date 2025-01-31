@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rudr.ai</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: white;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Orbitron', sans-serif;
+            position: relative;
+        }
+        
+        .container {
+            text-align: center;
+            position: relative;
+            padding: 20px;
+        }
+        
+        .logo {
+            max-width: 150px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            filter: none;
+        }
+        
+        .glow-text {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            background: linear-gradient(to right, #444, #888, #bbb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+            transition: transform 0.1s ease-out;
+        }
+        
+        .background-animation::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(0,255,255,0.1) 10%, rgba(255,255,255,1) 80%);
+            animation: pulse 4s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 0.6;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .glow-text {
+                font-size: 2rem;
+                letter-spacing: 3px;
+            }
+            .logo {
+                max-width: 100px;
+                top: 5px;
+                left: 5px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .glow-text {
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+            }
+            .logo {
+                max-width: 80px;
+                top: 5px;
+                left: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="rudr.png" alt="rudr.ai logo" class="logo">
+    <div class="container background-animation">
+        <div class="glow-text" id="glowText">rudr.ai</div>
+    </div>
+    
+    <script>
+        document.addEventListener("mousemove", function(event) {
+            const glowText = document.getElementById("glowText");
+            const x = (event.clientX / window.innerWidth) * 2 - 1;
+            const y = (event.clientY / window.innerHeight) * 2 - 1;
+            glowText.style.transform = `scale(${1 + Math.abs(x * 0.2)})`;
+        });
+    </script>
+</body>
+</html>
+
