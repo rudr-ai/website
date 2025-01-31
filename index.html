@@ -33,6 +33,7 @@
             top: 10px;
             left: 10px;
             filter: none;
+            transition: transform 0.1s ease-out;
         }
         
         .glow-text {
@@ -90,7 +91,7 @@
     </style>
 </head>
 <body>
-    <img src="rudr.png" alt="rudr.ai logo" class="logo">
+    <img src="rudr.png" alt="rudr.ai logo" class="logo" id="logo">
     <div class="container background-animation">
         <div class="glow-text" id="glowText">rudr.ai</div>
     </div>
@@ -98,11 +99,12 @@
     <script>
         document.addEventListener("mousemove", function(event) {
             const glowText = document.getElementById("glowText");
+            const logo = document.getElementById("logo");
             const x = (event.clientX / window.innerWidth) * 2 - 1;
             const y = (event.clientY / window.innerHeight) * 2 - 1;
             glowText.style.transform = `scale(${1 + Math.abs(x * 0.2)})`;
+            logo.style.transform = `scale(${1 + Math.abs(x * 0.1)})`;
         });
     </script>
 </body>
 </html>
-
