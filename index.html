@@ -54,25 +54,49 @@
             text-align: center;
             max-width: 600px;
             font-size: 1.2rem;
+            transition: transform 0.1s ease-out;
         }
         
         .contact-form {
             margin-top: 20px;
             text-align: center;
+            width: 90%;
+            max-width: 600px;
         }
         
-        .contact-form input, .contact-form button {
+        .contact-form form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-form input {
+            flex: 1;
+            min-width: 200px;
             padding: 10px;
-            margin: 5px;
             font-size: 1rem;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
         
         .contact-form button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
             background-color: black;
             color: white;
             cursor: pointer;
+            flex: 0 1 auto;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
         }
         
         @media (max-width: 768px) {
@@ -83,6 +107,13 @@
             .logo {
                 max-width: 80px;
             }
+            .contact-form form {
+                flex-direction: column;
+                align-items: center;
+            }
+            .contact-form input, .contact-form button {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -92,7 +123,7 @@
         <div class="glow-text" id="glowText">rudr.ai</div>
     </div>
     
-    <div class="description">
+    <div class="description" id="description">
         <p>Transforming enterprise workflows with Agentic AI.</p>
     </div>
     
@@ -104,13 +135,19 @@
         </form>
     </div>
     
+    <div class="footer">
+        &copy; 2025 Rudr AI. All rights reserved.
+    </div>
+    
     <script>
         document.addEventListener("mousemove", function(event) {
             const glowText = document.getElementById("glowText");
             const logo = document.getElementById("logo");
+            const description = document.getElementById("description");
             const x = (event.clientX / window.innerWidth) * 2 - 1;
             glowText.style.transform = `scale(${1 + Math.abs(x * 0.2)})`;
             logo.style.transform = `scale(${1 + Math.abs(x * 0.1)})`;
+            description.style.transform = `scale(${1 + Math.abs(x * 0.1)})`;
         });
     </script>
 </body>
