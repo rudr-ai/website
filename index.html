@@ -13,26 +13,28 @@
             background: white;
             color: black;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: hidden;
             font-family: 'Orbitron', sans-serif;
             position: relative;
         }
         
-        .container {
-            text-align: center;
-            position: relative;
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
             padding: 20px;
-        }
-        
-        .logo {
-            max-width: 150px;
             position: absolute;
             top: 10px;
             left: 10px;
-            filter: none;
+        }
+        
+        .logo {
+            max-width: 100px;
+            margin-right: 15px;
             transition: transform 0.1s ease-out;
         }
         
@@ -47,22 +49,30 @@
             transition: transform 0.1s ease-out;
         }
         
-        .background-animation::before {
-            content: '';
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(0,255,255,0.1) 10%, rgba(255,255,255,1) 80%);
-            animation: pulse 4s infinite alternate;
+        .description {
+            margin-top: 100px;
+            text-align: center;
+            max-width: 600px;
+            font-size: 1.2rem;
         }
         
-        @keyframes pulse {
-            0% {
-                opacity: 0.3;
-            }
-            100% {
-                opacity: 0.6;
-            }
+        .contact-form {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .contact-form input, .contact-form button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .contact-form button {
+            background-color: black;
+            color: white;
+            cursor: pointer;
         }
         
         @media (max-width: 768px) {
@@ -71,29 +81,27 @@
                 letter-spacing: 3px;
             }
             .logo {
-                max-width: 100px;
-                top: 5px;
-                left: 5px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .glow-text {
-                font-size: 1.5rem;
-                letter-spacing: 2px;
-            }
-            .logo {
                 max-width: 80px;
-                top: 5px;
-                left: 5px;
             }
         }
     </style>
 </head>
 <body>
-    <img src="rudr.png" alt="rudr.ai logo" class="logo" id="logo">
-    <div class="container background-animation">
+    <div class="header">
+        <img src="rudr.png" alt="rudr.ai logo" class="logo" id="logo">
         <div class="glow-text" id="glowText">rudr.ai</div>
+    </div>
+    
+    <div class="description">
+        <p>Transforming enterprise workflows with Agentic AI.</p>
+    </div>
+    
+    <div class="contact-form">
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLScKLCbAJ7TdN5iX1DbDOEdhjfoQ63elIa25kyMDFjN60atuiw/formResponse" method="POST" target="_blank">
+            <input type="text" name="entry.719479630" placeholder="Your Name" required>
+            <input type="email" name="entry.208551411" placeholder="Your Email" required>
+            <button type="submit">Contact Us</button>
+        </form>
     </div>
     
     <script>
@@ -101,7 +109,6 @@
             const glowText = document.getElementById("glowText");
             const logo = document.getElementById("logo");
             const x = (event.clientX / window.innerWidth) * 2 - 1;
-            const y = (event.clientY / window.innerHeight) * 2 - 1;
             glowText.style.transform = `scale(${1 + Math.abs(x * 0.2)})`;
             logo.style.transform = `scale(${1 + Math.abs(x * 0.1)})`;
         });
